@@ -1,0 +1,28 @@
+﻿@{
+	ViewData["Title"] = "Invoices";
+}
+
+@model Invoice[]
+
+<div class="text-center">
+	<h1 class="display-4">@ViewData["Title"]</h1>
+	<table class="table table-bordered table-hover table-sm">
+		<thead class="text-center">
+			<tr class="fs-4">
+				<th>Item</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var invoice in Model)
+			{
+				<tr>
+					<td >@invoice.Item</td>
+					<td>@invoice.Price Euro</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+
