@@ -25,7 +25,15 @@ namespace InvoicePrinter.Controllers
 
         public IActionResult Invoices()
         {
-            Invoice[] invoices = Invoice.invoices;
+
+            Invoice objInvoice = new Invoice();
+            objInvoice.Items = new string[] { "item1", "item2" };
+
+            objInvoice.Prices = new double[] {10.00, 20.10};
+            
+
+            Invoice[] invoices = new Invoice[]{objInvoice};
+            
 
             return View(invoices);
         }
