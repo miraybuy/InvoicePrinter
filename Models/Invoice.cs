@@ -1,5 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Xml.Linq;
+﻿
+
 
 namespace InvoicePrinter.Models
 {
@@ -7,43 +7,48 @@ namespace InvoicePrinter.Models
 		//invoice row with item and price 
 		//n numeri di fatture collection
 	{
-		private string[] m_items;
-		private double[] m_prices;
+		private List<InvoiceRow> m_invoiceRows;
+		//private string[] m_items;
+		//private double[] m_prices;
 
 		public Invoice()
 		{//dentro costruttore allochiamo i variabili 
 
-			m_items = new string[0];
-			m_prices = new double[0];
+			m_invoiceRows = new List<InvoiceRow>();
+			//m_items = new string[0];
+			//m_prices = new double[0];
 		}
 
-		public string[] Items
+		public List<InvoiceRow> InvoiceRows
 		{
-			get
-			{
-				return m_items;
-			}
-			set
-			{
-				
-					//log ci sono 27 elementi per esempio 
-				
-				m_items = value;
-			}
+			get { return m_invoiceRows; }
+			set { m_invoiceRows = value; }
 		}
 
-		public double[] Prices
-		{
-			get
-			{
-				return m_prices;
-			}
-			set
-			{
-			
-				m_prices = value;
-			}
-		}
+		//public string[] Items
+		//{
+		//	get
+		//	{
+		//		return m_items;
+		//	}
+		//	set
+		//	{	
+		//		m_items = value;
+		//	}
+		//}
+
+		//public double[] Prices
+		//{
+		//	get
+		//	{
+		//		return m_prices;
+		//	}
+		//	set
+		//	{
+
+		//		m_prices = value;
+		//	}
+		//}
 		//	public string[] GetItems()
 		//	{
 		//		return m_items;

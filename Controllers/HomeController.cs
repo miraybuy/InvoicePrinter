@@ -26,16 +26,35 @@ namespace InvoicePrinter.Controllers
         public IActionResult Invoices()
         {
 
-            Invoice objInvoice = new Invoice();
-            objInvoice.Items = new string[] { "item1", "item2" };
+			Invoice invoice1 = new Invoice();
+			invoice1.InvoiceRows.Add(new InvoiceRow { Item = "Item 1", Price = 10.00 });
+			invoice1.InvoiceRows.Add(new InvoiceRow { Item = "Item 2", Price = 20.10 });
+			invoice1.InvoiceRows.Add(new InvoiceRow { Item = "Item 3", Price = 5.50 });
 
-            objInvoice.Prices = new double[] {10.00, 20.10};
-            
+			Invoice invoice2 = new Invoice();
+			invoice2.InvoiceRows.Add(new InvoiceRow { Item = "Item 4", Price = 15.00 });
+			invoice2.InvoiceRows.Add(new InvoiceRow { Item = "Item 5", Price = 8.20 });
 
-            Invoice[] invoices = new Invoice[]{objInvoice};
-            
+			List<Invoice> invoices = new List<Invoice>();
+			invoices.Add(invoice1);
+			invoices.Add(invoice2);
 
-            return View(invoices);
+			//Invoice objInvoice = new Invoice();
+			//objInvoice.InvoiceRows.Add(new InvoiceRow { Item = "item1", Price = 10.20 });
+			//objInvoice.InvoiceRows.Add(new InvoiceRow { Item = "item2", Price = 20.10 });
+
+			//List<Invoice> invoices = new List<Invoice>();
+			//invoices.Add(objInvoice);
+
+			//objInvoice.Items = new string[] { "item1", "item2" };
+
+			//objInvoice.Prices = new double[] {10.00, 20.10};
+
+
+			//Invoice[] invoices = new Invoice[]{objInvoice};
+
+
+			return View(invoices);
         }
 
 

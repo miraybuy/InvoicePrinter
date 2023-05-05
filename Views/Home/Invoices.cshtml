@@ -2,7 +2,7 @@
 	ViewData["Title"] = "Invoices";
 }
 
-@model Invoice[]
+@model List<InvoicePrinter.Models.Invoice>
 
 <div class="text-center">
 
@@ -14,17 +14,63 @@
 			<tr class="fs-4">
 				<th>Item</th>
 				<th>Price</th>
+				<th>Total</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			@foreach (var invoice in Model)
 			{
-				<tr>
-					<td >@invoice.Items[0]</td>
-					<td>@invoice.Prices[0] Euro</td>
-				</tr>
+
+				{
+					<tr>
+						<td>
+							@foreach (var invoiceRow in invoice.InvoiceRows)
+							{
+								<p>@invoiceRow.Item</p>
+							}
+						</td>
+						<td>@* var invoiceRow*@
+							@foreach (var invoiceRow in invoice.InvoiceRows)
+
+							{
+								<p>@invoiceRow.Price Euro</p>
+							}
+						</td>
+						<td class="align-middle">
+							@{
+								double? totalPrice = 0.0;
+								foreach (var invoiceRow in invoice.InvoiceRows)
+								{
+									totalPrice += invoiceRow.Price;
+								}
+							}
+							<p>@totalPrice Euro</p>
+						</td>
+					</tr>
+				}
+
+				@*<tr>
+			<td >@invoice.Items[0]</td>
+			<td>@invoice.Prices[0] Euro</td>
+			</tr>*@
 			}
+			<tr>@*InvoicesManager*@
+				<td colspan="2" class="text-end fw-bold">Billed Total:</td>
+				<td class="align-middle">
+					@{
+						double? totalBilledAmount = 0.0;
+						foreach (var invoice in Model)
+						{
+							foreach (var invoiceRow in invoice.InvoiceRows)
+							{
+								totalBilledAmount += invoiceRow.Price;
+							}
+						}
+					}
+					<p>@totalBilledAmount Euro</p>
+				</td>
+			</tr>
 		</tbody>
 
 	</table>
